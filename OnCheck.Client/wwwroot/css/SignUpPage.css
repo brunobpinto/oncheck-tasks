@@ -1,0 +1,139 @@
+.signup-container {
+    max-width: 1200px;
+    padding: 0 24px;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-left: 12rem;
+}
+
+.signup-form {
+    max-width: 400px;
+    flex: 1;
+    margin-top: 5rem;
+}
+
+.signup-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #222;
+}
+
+.signup-video {
+    flex: 2;
+    max-width: 700px;
+}
+
+.signup-video-element {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Navbar simples sem linha */
+.signin-navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: white;
+    padding-left: 13rem !important; /* alinhado com o Sign In */
+    padding-top: 1.5rem !important;
+    padding-bottom: 1rem;
+    margin-bottom: -40px !important;
+}
+
+/* Botão de logo */
+.home-logo-btn {
+    background: none;
+    border: none !important;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Logo com tamanho maior */
+.home-logo-img {
+    height: 36px;
+    object-fit: contain;
+    opacity: 100% !important;
+}
+
+.loginBtn-custom {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background-color: #F4F4F4;
+    color: #222;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 14px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .loginBtn-custom:hover {
+    background-color: #28272C;
+    color: white;
+  }
+
+.signin-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 1rem;
+    text-align: center;
+}
+  
+.signin-link {
+    color: #28272C;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 4px;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+  
+.signin-link:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.floating-error-alert {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1050;
+    max-width: 320px;
+    padding: 0.85rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    background-color: #f8d7da;
+    color: #842029;
+    box-shadow: none; /* sombra mais leve e natural */
+}
+/* Botão X discreto no topo */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #842029; /* tom de vermelho do alert-danger */
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    margin-top: -2px;
+}
+
+.close-btn:hover {
+    color: #5c1a1f;
+}
+
+.validation-message {
+    font-size: 0.7rem;
+    color: #dc3545; /* vermelho padrão do Bootstrap */
+    margin-top: 4px;
+    margin-bottom: -4px;
+}
+

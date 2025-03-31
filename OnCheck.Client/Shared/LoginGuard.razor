@@ -1,0 +1,15 @@
+@inject AuthService AuthService
+@inject NavigationManager NavigationManager
+
+@if (!AuthService.IsLoggedIn)
+{
+    NavigationManager.NavigateTo("/signin");
+}
+else
+{
+    @ChildContent
+}
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

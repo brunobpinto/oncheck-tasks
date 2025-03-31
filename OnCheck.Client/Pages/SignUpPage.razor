@@ -1,0 +1,111 @@
+@page "/signup"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@using OnCheck.Shared.Models.Auth;
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnCheck</title>
+    <link rel="stylesheet" href="css/SignUpPage.css" />
+</head>
+
+<!-- Navbar simples com logo -->
+<div class="signin-navbar px-4 py-3">
+    <button class="home-logo-btn" style="border: none; background: none;" @onclick="@(() => NavigationManager.NavigateTo("/"))">
+        <img src="media/OnCheckLogo.jpg"
+            alt="OnCheck Logo"
+            style="height: 36px; object-fit: contain; opacity: 0%;" 
+            class="home-logo-img"/>
+    </button>
+</div>
+
+<div class="signup-container d-flex justify-content-center align-items-center">
+    <!-- Formulário -->
+    <div class="signup-form me-5">
+        <h2 class="signup-title mb-4">Sign Up</h2>
+
+        <EditForm Model="@registerModel" OnValidSubmit="SignUp">
+            <DataAnnotationsValidator />
+
+            <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <InputText class="form-control" @bind-Value="registerModel.FirstName" />
+                <ValidationMessage For="@(() => registerModel.FirstName)" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <InputText class="form-control" @bind-Value="registerModel.LastName" />
+                <ValidationMessage For="@(() => registerModel.LastName)" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <InputText class="form-control" @bind-Value="registerModel.Username" />
+                <ValidationMessage For="@(() => registerModel.Username)" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <InputText type="password" class="form-control" @bind-Value="registerModel.Password" />
+                <ValidationMessage For="@(() => registerModel.Password)" />
+            </div>
+
+            @if (!string.IsNullOrEmpty(serverError))
+            {
+                <div class="floating-error-alert alert alert-danger">
+                    <div class="d-flex justify-content-between align-items-center gap-3">
+                        <span class="flex-grow-1">@serverError</span>
+                        <button class="close-btn" @onclick="() => serverError = string.Empty">✕</button>
+                    </div>
+                </div>
+            }
+
+            <button class="loginBtn-custom" type="submit">Sign Up</button>
+        </EditForm>
+
+        <p class="signin-text">
+            Already registered? <a class="signin-link" @onclick="@(() => NavigationManager.NavigateTo("/signin"))">Go to login</a>
+        </p>
+    </div>
+
+    <!-- Vídeo -->
+    <div class="signup-video">
+        <video autoplay muted loop class="rounded signup-video-element">
+            <source src="media/OnCheckGetStartedAnimation.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+
+@code {
+    [Inject] IJSRuntime JS { get; set; } = default!;
+
+    private RegisterModel registerModel = new();
+    private string serverError = "";
+
+    private async Task SignUp()
+    {
+        serverError = "";
+        var response = await Http.PostAsJsonAsync("api/users", registerModel);
+
+        if (response.IsSuccessStatusCode)
+        {
+            NavigationManager.NavigateTo("/tasks");
+        }
+        else
+        {
+            var errorResponse = await response.Content.ReadFromJsonAsync<Dictionary<string, string>>();
+            if (errorResponse != null && errorResponse.TryGetValue("message", out var message))
+            {
+                serverError = message;
+            }
+            else
+            {
+                serverError = "An unexpected error occurred";
+            }
+        }
+    }
+}

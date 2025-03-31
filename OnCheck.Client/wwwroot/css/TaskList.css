@@ -1,0 +1,558 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+/* Reset */
+body {
+    margin: 0;
+    font-family: 'Poppins';
+    font-weight: 600 !important;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #ffffff !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.task-details-actions {
+    margin-top: auto;
+    padding-top: 16px;
+    gap: 0.8rem;
+}
+
+.btn-delete,
+.btn-edit {
+    padding: 12px 2px;        /* aumenta altura e largura */
+    font-size: 1rem !important;           /* texto um pouco maior */
+    font-weight: 600;
+    border-radius: 12px !important;
+}
+
+.btn-delete {
+    background-color: #F4F4F4;
+    border: 1px solid #b1b1b1 !important;
+    color: #444444 !important;
+}
+
+.btn-delete:hover {
+    background-color: #EBEBEB;
+    border: 1px solid #ccc !important;
+}
+
+.btn-edit {
+    background-color: #FFDA54;
+    border: 1px solid #FFDA54 !important;
+    color: #28272C !important;
+}
+
+.btn-edit:hover {
+    background-color: #FFD43B;
+    border: 1px solid #FFD43B !important;
+}
+
+
+
+
+/* Sidebar (Menu) */
+.menu-sidebar {
+    width: 280px;
+    background-color: #F4F4F4; /* cinza claro */
+    height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+
+    border-radius: 16px;
+    margin: 16px;
+    margin-bottom: 24px !important;
+    box-shadow: none !important; /* sem sombra */
+}
+
+.menu-sidebar h5,
+.menu-sidebar h6 {
+    font-weight: 600;
+}
+
+.menu-sidebar input[type="text"] {
+    border: none;
+    padding: 0px !important;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.task-counter-large {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 3px 10px;           /* mais espaço interno */
+    font-size: 2rem;             /* texto maior */
+    color: #28272C;
+    min-width: 48px;
+    text-align: center;
+    font-weight: 500 !important;
+    margin-left: 1.2rem;
+    display: inline-block;
+
+}
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #F4F4F4;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-bottom: 16px;
+}
+
+.search-container i {
+    color: #999;
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.search-container input {
+    border: none;
+    background: transparent;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+}
+
+.search-container input::placeholder {
+    color: #999;
+}
+
+/* Task List */
+.task-item {
+    padding: 0.6rem 0;
+    background-color: transparent;
+    border-top: 1px solid #e0e0e0;
+    min-height: 60px;
+}
+
+/* Wrapper para alinhar a barra vertical */
+.difficulty-bar-wrapper {
+    width: 16px; /* espaço da barra + espaçamento */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* A barra colorida vertical */
+.difficulty-bar {
+    width: 8px;
+    height: 80%; /* menor que 100% */
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    top: 50%;                  /* posiciona no meio do container */
+    transform: translateY(-50%); /* move metade da própria altura pra cima */
+}
+
+/* Cores pastel */
+.difficulty-bar-easy {
+    background-color: #b2f2bb;
+}
+
+.difficulty-bar-medium {
+    background-color: #fff3cd;
+}
+
+.difficulty-bar-hard {
+    background-color: #f8d7da;
+}
+
+/* Checkbox maior e com espaço à esquerda */
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 4px;
+    cursor: pointer;
+    border-radius: 16px !important;
+}
+
+/* Título da tarefa */
+.task-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* Responsável */
+.task-user {
+    font-size: 0.85rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Botão de abrir */
+.task-toggle-btn {
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Right panel */
+.task-details-sidebar {
+    width: 33.33%; /* ocupa 1/3 da tela */
+    background-color: #F4F4F4;
+    padding: 24px;
+    border: none;
+    border-radius: 16px;
+    margin: 16px;
+    margin-bottom: 24px;
+    box-shadow: none;
+    height: calc(100vh - 90px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.task-detail-block {
+    background-color: #F4F4F4;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 14px;
+    color: #333333b9;
+    font-weight: 500;
+}
+
+.task-detail-block strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #28272C;
+}
+
+.task-details-sidebar h5 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #F4F4F4;
+    border: none;
+    align-content: left !important;
+    color: #444444 !important;
+}
+
+.btn-primary {
+    
+    background-color: #EBEBEB !important;
+    color: #444444 !important;
+    border: none;
+    font-weight: bold;
+}
+
+.btn-outline-secondary {
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.btn-warning {
+    background-color: #facc15;
+    border: none;
+    color: #000;
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    color: #fff;
+    border: none;
+}
+
+.btn-sm {
+    font-size: 13px;
+    padding: 4px 8px;
+}
+
+.btn:focus,
+.btn:focus-visible,
+.btn:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Tag-like buttons */
+.tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    background-color: #e5e7eb;
+    margin-right: 4px;
+}
+
+/* Layout adjustments */
+.main-layout {
+    display: flex;
+    height: calc(100vh - 64px);
+    overflow: hidden;
+}
+
+.flex-fill {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.d-flex.gap-2 > * {
+    margin-right: 8px;
+}
+
+
+.sidebar-section-label {
+    font-size: 11px;
+    font-weight: bold;
+    color: #28272C;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    margin-top: 2rem !important;
+}
+
+
+/* Base para todos os botões */
+.btn-custom {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 24px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: -5px;
+  }
+  
+  /* Botão claro: "Log in" */
+  .btn-custom-light {
+    background-color: #ffffff;
+    color: #1e1e1e;
+    border: 1px solid #ccc;
+  }
+  
+  .btn-custom-light:hover {
+    background-color: #ededed;
+  }
+  
+  /* Botão vermelho: "Get started" */
+  .btn-custom-red {
+    background-color: #BB2D3B;
+    color: white;
+    border: none;
+  }
+  
+  .btn-custom-red:hover {
+    background-color: #7f1c26;
+  }
+
+
+/* Quadradinho colorido (ícone) */
+.difficulty-icon {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+}
+
+/* Cores pastel dos ícones */
+.easy-icon {
+    background-color: #1EE080;
+}
+
+.medium-icon {
+    background-color: #FFDA54;
+}
+
+.hard-icon {
+    background-color: #ff8080;
+}
+
+.sidebar-divider {
+    border: none;
+    border-top: 1px solid #c2c2c2;
+    margin: 1rem 0;
+    margin-bottom: -10px;
+}
+
+.menu-toggle-btn {
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: #333; /* opcional: cor padrão */
+    transition: color 0.2s ease;
+}
+
+.menu-toggle-btn:hover {
+    color: #000; /* escurece no hover, se quiser */
+}
+
+.language-selector {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.dropdown-menu {
+    border-radius: 8px;
+
+}
+
+.dropdown-menu .dropdown-item {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+}
+
+.serviceBtns {
+    color: #444444 !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    background-color: #F4F4F4;
+    color: #444444;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 8px !important;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    width: 65% !important;
+}
+  
+.serviceBtns:hover {
+    background-color: #EBEBEB;
+    color: #444444;
+    font-weight: 600 !important;
+}
+
+.lang-radio {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #888;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.lang-radio.selected {
+    background-color: #444444;
+    border-color: #444444;
+}
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
+}
+
+.popup-icon {
+    width: 180px;
+    height: 180px;
+}
+
+.popup-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.popup-subtext {
+    font-size: 0.95rem;
+    color: #777;
+    margin-bottom: 0;
+}
+
+.popup-btn-cancel,
+.popup-btn-delete {
+    padding: 0.6rem 1.4rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    min-width: 100px;
+}
+
+.popup-btn-cancel {
+    background-color: #e0e0e0;
+    color: #444;
+}
+
+.popup-btn-cancel:hover {
+    background-color: #d6d6d6;
+}
+
+.popup-btn-delete {
+    background-color: #ff3b5c;
+    color: #fff;
+}
+
+.popup-btn-delete:hover {
+    background-color: #e23350;
+}
+
+.task-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    line-height: 1;
+    padding: 0 6px;
+}
+
+.task-close-btn:hover {
+    color: #28272C; /* ou #000, ou algo mais sutil */
+}
+
+.content-with-padding-left {
+    padding-left: 7.5rem;
+}
+
+.content-with-padding-right {
+    padding-right: 7.5rem;
+}

@@ -1,0 +1,21 @@
+@page "/404"
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnCheck</title>
+    <link rel="stylesheet" href="css/NotFound.css" />
+</head>
+
+<div class="notfound-container">
+    <img src="media/OnCheck404.png" alt="404 - Not Found" class="notfound-img" />
+    <h1 class="notfound-title">Page not found</h1>
+    <p class="notfound-text">Ops! The page you're looking for doesn't exist or has been moved.</p>
+    <button class="notfound-btn" @onclick="@(() => NavigationManager!.NavigateTo("/"))">
+        Back to Home
+    </button>
+</div>
+
+@code {
+    [Inject] NavigationManager? NavigationManager { get; set; }
+}

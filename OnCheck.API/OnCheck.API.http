@@ -1,0 +1,13 @@
+@OnCheck_API_HostAddress = http://localhost:5264
+
+### Get all users
+GET {{OnCheck_API_HostAddress}}/api/users
+Accept: application/json
+
+###
+
+### Get all tasks
+GET {{OnCheck_API_HostAddress}}/api/tasks
+Accept: application/json
+
+

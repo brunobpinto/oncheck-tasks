@@ -1,0 +1,11 @@
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\bin\Debug\net8.0\OnCheck.Shared.deps.json
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\bin\Debug\net8.0\OnCheck.Shared.dll
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\bin\Debug\net8.0\OnCheck.Shared.pdb
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\obj\Debug\net8.0\OnCheck.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\obj\Debug\net8.0\OnCheck.Shared.AssemblyInfoInputs.cache
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\obj\Debug\net8.0\OnCheck.Shared.AssemblyInfo.cs
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\obj\Debug\net8.0\OnCheck.Shared.csproj.CoreCompileInputs.cache
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\obj\Debug\net8.0\OnCheck.Shared.dll
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\obj\Debug\net8.0\refint\OnCheck.Shared.dll
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\obj\Debug\net8.0\OnCheck.Shared.pdb
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Shared\obj\Debug\net8.0\ref\OnCheck.Shared.dll

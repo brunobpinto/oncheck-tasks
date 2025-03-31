@@ -1,0 +1,150 @@
+@page "/tasks/edit/{Id:int}"
+@using OnCheck.Shared.Models
+@using System.ComponentModel.DataAnnotations
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<LoginGuard>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnCheck</title>
+    <link rel="stylesheet" href="css/TaskEdit.css" />
+</head>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    public class TaskEditFormModel
+    {
+        [Required(ErrorMessage = "Title is required")]
+        public string Title { get; set; } = string.Empty;
+
+        public string Description { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "User is required")]
+        public int? UserId { get; set; }
+
+        public DateTime DueDate { get; set; } = DateTime.Today;
+        public string Difficulty { get; set; } = "Easy";
+        public bool Completed { get; set; } = false;
+        public int Id { get; set; }
+    }
+
+    private TaskEditFormModel taskForm = new();
+    private List<User> users = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var task = await Http.GetFromJsonAsync<TaskItem>($"api/tasks/{Id}") ?? new();
+        users = await Http.GetFromJsonAsync<List<User>>("api/users") ?? new();
+
+        taskForm = new TaskEditFormModel
+        {
+            Id = task.Id,
+            Title = task.Title,
+            Description = task.Description,
+            DueDate = task.DueDate,
+            Difficulty = task.Difficulty,
+            Completed = task.Completed,
+            UserId = task.UserId
+        };
+    }
+
+    private async Task SaveChanges()
+    {
+        var task = new TaskItem
+        {
+            Id = taskForm.Id,
+            Title = taskForm.Title,
+            Description = taskForm.Description,
+            DueDate = taskForm.DueDate,
+            Difficulty = taskForm.Difficulty,
+            Completed = taskForm.Completed,
+            UserId = taskForm.UserId ?? 0
+        };
+
+        await Http.PutAsJsonAsync($"api/tasks/{task.Id}", task);
+        NavigationManager.NavigateTo("/tasks");
+    }
+
+    private void Cancel()
+    {
+        NavigationManager.NavigateTo("/tasks");
+    }
+
+    private Task SetDifficulty(string level)
+    {
+        taskForm.Difficulty = level;
+        return Task.CompletedTask;
+    }
+
+    private void GoToTaskList() => NavigationManager.NavigateTo("/tasks");
+    private void GoToAddTask() => NavigationManager.NavigateTo("/tasks/add");
+    private void Logout() => NavigationManager.NavigateTo("/");
+}
+
+<header class="navbar bg-light px-4 py-2 shadow-sm d-flex justify-between items-center">
+    <a href="/" class="d-flex align-items-center gap-2 ms-3 text-decoration-none">
+        <img src="media/OnCheckLogo.jpg" alt="Logo" style="height: 36px; margin-bottom: -10px;" />
+    </a>
+    <div class="d-flex gap-2">
+        <button class="btn-custom btn-custom-light" @onclick="GoToTaskList">Task List</button>
+        <button class="btn-custom btn-custom-light" @onclick="GoToAddTask">Add New Task</button>
+        <button class="btn-custom btn-custom-red" @onclick="Logout">Logout</button>
+    </div>
+</header>
+
+<!-- Formulário de edição -->
+<div class="container">
+    <h2>Edit Task</h2>
+
+    <EditForm Model="@taskForm" OnValidSubmit="SaveChanges">
+        <DataAnnotationsValidator />
+
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <InputText class="form-control" @bind-Value="taskForm.Title" maxlength="55"/>
+            <ValidationMessage For="@(() => taskForm.Title)" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">User</label>
+            <InputSelect class="form-select" @bind-Value="taskForm.UserId">
+                <option value="">-- Selecione --</option>
+                @foreach (var user in users)
+                {
+                    <option value="@user.Id">@user.FirstName</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => taskForm.UserId)" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <InputTextArea class="form-control" rows="4" @bind-Value="taskForm.Description" maxlength="500"/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Difficulty</label>
+            <div class="btn-group">
+                <button type="button" class="btn difficulty-btn @(taskForm.Difficulty == "Easy" ? "selected easy" : "easy")" @onclick='async () => await SetDifficulty("Easy")'>Easy</button>
+                <button type="button" class="btn difficulty-btn @(taskForm.Difficulty == "Medium" ? "selected medium" : "medium")" @onclick='async () => await SetDifficulty("Medium")'>Medium</button>
+                <button type="button" class="btn difficulty-btn @(taskForm.Difficulty == "Hard" ? "selected hard" : "hard")" @onclick='async () => await SetDifficulty("Hard")'>Hard</button>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Due Date</label>
+            <InputDate class="form-control" @bind-Value="taskForm.DueDate" />
+        </div>
+
+        <div class="d-flex justify-content-end gap-2">
+            <button class="loginBtn-cancel" @onclick="Cancel" type="button">Cancel</button>
+            <button class="loginBtn-save" type="submit">Save Changes</button>
+        </div>
+    </EditForm>
+</div>
+
+</LoginGuard>

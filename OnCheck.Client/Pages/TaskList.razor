@@ -1,0 +1,346 @@
+@page "/tasks"
+@using OnCheck.Shared.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<LoginGuard>
+    <!-- Página protegida começa aqui -->
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnCheck</title>
+    <link rel="stylesheet" href="css/TaskList.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+
+@code {
+    private List<TaskItem> tasks = new();
+    private int? openTaskId = null;
+    private bool isMenuOpen = true;
+    private bool ShouldAddLeftPadding => !isMenuOpen && openTaskId.HasValue;
+    private bool ShouldAddRightPadding => isMenuOpen && !openTaskId.HasValue;
+    private string statusFilter = "All";
+    private string difficultyFilter = "All";
+    private string searchTerm = string.Empty;
+    private string currentFilterName = "All Tasks";
+
+    private IEnumerable<TaskItem> FilteredTasks => tasks.Where(task =>
+        (statusFilter == "All" || (statusFilter == "Completed" && task.Completed) || (statusFilter == "Pending" && !task.Completed)) &&
+        (difficultyFilter == "All" || task.Difficulty == difficultyFilter) &&
+        (string.IsNullOrWhiteSpace(searchTerm) || (task.UserFirstName?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false))
+    );
+
+    protected override async Task OnInitializedAsync()
+    {
+        statusFilter = "All";
+        difficultyFilter = "All";
+        currentFilterName = "All Tasks";
+        isMenuOpen = true;
+        tasks = await Http.GetFromJsonAsync<List<TaskItem>>("api/tasks") ?? new();
+    }
+
+    void ToggleAccordion(int id)
+    {
+        openTaskId = openTaskId == id ? null : id;
+    }
+
+    void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+    }
+
+    void EditTask(int id)
+    {
+        NavigationManager.NavigateTo($"/tasks/edit/{id}");
+    }
+
+    void GoToTaskList() => NavigationManager.NavigateTo("/tasks");
+    void GoToAddTask() => NavigationManager.NavigateTo("/tasks/add");
+    void Logout() => NavigationManager.NavigateTo("/signin");
+
+    async Task DeleteTask(int id)
+    {
+        await Http.DeleteAsync($"api/tasks/{id}");
+        tasks = await Http.GetFromJsonAsync<List<TaskItem>>("api/tasks") ?? new();
+        openTaskId = null;
+    }
+
+    async Task ToggleCompleted(TaskItem task)
+    {
+        task.Completed = !task.Completed;
+        await Http.PutAsJsonAsync($"api/tasks/{task.Id}", task);
+        if (openTaskId == task.Id)
+        {
+            openTaskId = null;
+        }
+    }
+
+    void SetStatusFilter(string status)
+    {
+        statusFilter = status;
+        currentFilterName = status switch
+        {
+            "Completed" => "Completed Tasks",
+            "Pending" => "Pending Tasks",
+            _ => "All Tasks"
+        };
+        openTaskId = null;
+    }
+
+    void SetDifficultyFilter(string difficulty)
+    {
+        difficultyFilter = difficulty;
+        openTaskId = null;
+    }
+
+    void ClearDifficultyFilter()
+    {
+        difficultyFilter = "All";
+        statusFilter = "All";
+        currentFilterName = "All Tasks";
+        openTaskId = null;
+    }
+    private string selectedLanguage = "en";
+
+    private void SelectLanguage(string lang)
+    {
+        selectedLanguage = lang;
+        // Aqui você pode implementar troca de idioma de verdade, se quiser.
+    }
+
+    private bool showConfirmPopup = false;
+    private int taskIdToDelete;
+
+    void AskToDelete(int taskId)
+    {
+        taskIdToDelete = taskId;
+        showConfirmPopup = true;
+    }
+
+    async Task ConfirmDelete()
+    {
+        await DeleteTask(taskIdToDelete);
+        showConfirmPopup = false;
+    }
+
+    void CancelDelete()
+    {
+        showConfirmPopup = false;
+    }
+}
+
+<!-- Navbar -->
+<header class="navbar bg-light px-4 py-2 shadow-sm d-flex justify-between items-center">
+    <a href="/" class="d-flex align-items-center gap-2 ms-3 text-decoration-none">
+        <img src="media/OnCheckLogo.jpg" alt="Logo" style="height: 36px; margin-bottom: -10px;" />
+    </a>
+    <div class="d-flex gap-2">
+        <button class="btn-custom btn-custom-light" @onclick="GoToTaskList">Task List</button>
+        <button class="btn-custom btn-custom-light" @onclick="GoToAddTask">Add New Task</button>
+        <button class="btn-custom btn-custom-red" @onclick="Logout">Logout</button>
+    </div>
+</header>
+
+<!-- Layout Flexível com menu e painel de detalhes -->
+<div class="main-layout d-flex">
+    @if (isMenuOpen)
+    {
+        <div class="menu-sidebar shadow p-3 d-flex flex-column justify-content-between">
+            <div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="mb-0">Menu</h5>
+                    <button class="menu-toggle-btn" @onclick="ToggleMenu">☰</button>
+                </div>
+                <div class="search-container">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Search" @bind="searchTerm" @bind:event="oninput" />
+                </div>
+                <div class="sidebar-section-label mt-3">TASKS</div>
+                <button class="btn w-100 mb-1 text-start text-dark d-flex align-items-center gap-2 @(statusFilter == "All" ? "btn-primary" : "btn-light")" @onclick='() => SetStatusFilter("All")'>
+                    <i class="bi bi-list-task"></i> All Tasks
+                </button>
+                <button class="btn w-100 mb-1 text-start text-dark d-flex align-items-center gap-2 @(statusFilter == "Completed" ? "btn-primary" : "btn-light")" @onclick='() => SetStatusFilter("Completed")'>
+                    <i class="bi bi-check2-circle"></i> Completed
+                </button>
+
+                <button class="btn w-100 mb-1 text-start text-dark d-flex align-items-center gap-2 @(statusFilter == "Pending" ? "btn-primary" : "btn-light")" @onclick='() => SetStatusFilter("Pending")'>
+                    <i class="bi bi-hourglass-split"></i> Pending
+                </button>
+
+                <hr class="sidebar-divider" />
+
+                <div class="sidebar-section-label mt-4">DIFFICULTIES</div>
+                <button class="btn w-100 mb-1 text-start text-dark d-flex align-items-center gap-2 @(difficultyFilter == "Easy" ? "btn-primary" : "btn-light")"
+                        @onclick='() => SetDifficultyFilter("Easy")'>
+                    <span class="difficulty-icon easy-icon"></span>
+                    Easy
+                </button>
+
+                <button class="btn w-100 mb-1 text-start text-dark d-flex align-items-center gap-2 @(difficultyFilter == "Medium" ? "btn-primary" : "btn-light")"
+                        @onclick='() => SetDifficultyFilter("Medium")'>
+                    <span class="difficulty-icon medium-icon"></span>
+                    Medium
+                </button>
+
+                <button class="btn w-100 mb-1 text-start text-dark d-flex align-items-center gap-2 @(difficultyFilter == "Hard" ? "btn-primary" : "btn-light")"
+                        @onclick='() => SetDifficultyFilter("Hard")'>
+                    <span class="difficulty-icon hard-icon"></span>
+                    Hard
+                </button>
+            </div>
+            <div class="d-flex flex-column gap-2 align-items-start w-100">
+
+                <!-- Botão de limpar dificuldade -->
+                <button class="serviceBtns btn btn-sm btn-outline-dark w-100 d-flex align-items-center gap-2"
+                        title="Limpar dificuldade"
+                        @onclick="ClearDifficultyFilter">
+                    <i class="bi bi-x-circle"></i>Clear Filters
+                </button>
+
+                <!-- Dropdown de linguagem -->
+                <div class="dropdown w-100">
+                    <button class="serviceBtns btn btn-sm dropdown-toggle w-100 d-flex align-items-center gap-2"
+                            type="button"
+                            id="languageDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        <i class="bi bi-globe2"></i> Language
+                    </button>
+                    <ul class="dropdown-menu w-65" aria-labelledby="languageDropdown">
+                        <li>
+                            <a class="dropdown-item"
+                            href="#"
+                            @onclick='() => SelectLanguage("en")'
+                            @onclick:preventDefault="true">
+                            <span class="lang-radio @(selectedLanguage == "en" ? "selected" : "")"></span>
+                                English
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                            href="#"
+                            @onclick='() => SelectLanguage("pt")'
+                            @onclick:preventDefault="true">
+                            <span class="lang-radio @(selectedLanguage == "pt" ? "selected" : "")"></span>
+                                Português
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    }
+
+    <div class="flex-fill">
+        <!-- Conteúdo -->
+        <div class="container mt-4 @(ShouldAddLeftPadding ? "content-with-padding-left" : "") @(ShouldAddRightPadding ? "content-with-padding-right" : "")">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="d-flex align-items-center gap-2">
+                    @if (!isMenuOpen)
+                    {
+                        <button class="menu-toggle-btn" @onclick="ToggleMenu">☰</button>
+                    }
+                    <h2 class="mb-0 d-flex align-items-center gap-2" style="font-weight: 700;">
+                        @currentFilterName
+                        <span class="task-counter-large" >@FilteredTasks.Count()</span>
+                    </h2>
+                </div>
+            </div>
+
+            @foreach (var task in FilteredTasks)
+            {
+                var difficultyClass = task.Difficulty?.ToLower() switch
+                {
+                    "easy" => "difficulty-bar-easy",
+                    "medium" => "difficulty-bar-medium",
+                    "hard" => "difficulty-bar-hard",
+                    _ => ""
+                };
+
+                <div @key="task.Id" class="task-item d-flex align-items-start position-relative border-top">
+                    <div class="difficulty-bar-wrapper d-flex align-items-center">
+                        <div class="difficulty-bar @difficultyClass"></div>
+                    </div>
+
+                    <input type="checkbox"
+                        class="task-checkbox"
+                        checked="@task.Completed"
+                        @onchange="() => ToggleCompleted(task)" />
+
+                    <div class="flex-grow-1">
+                        <strong class="task-title">@task.Title</strong>
+                        <div class="task-user text-muted mt-1">
+                            <i class="bi bi-person"></i> @task.UserFirstName
+                        </div>
+                    </div>
+
+                    <button class="task-toggle-btn" @onclick="() => ToggleAccordion(task.Id)">
+                        <img src="media/OnCheckArrow.png">
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (openTaskId.HasValue)
+    {
+        var task = tasks.FirstOrDefault(t => t.Id == openTaskId);
+        if (task != null)
+        {
+            <div class="task-details-sidebar">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h5>@task.Title</h5>
+                    <button class="task-close-btn" @onclick="() => openTaskId = null" title="Close">
+                        ✕
+                    </button>
+                </div>
+                <div class="task-detail-block">
+                    <strong>Description</strong>
+                    @task.Description
+                </div>
+
+                <div class="task-detail-block">
+                    <strong>Due Date</strong>
+                    @task.DueDate.ToShortDateString()
+                </div>
+
+                <div class="task-detail-block">
+                    <strong>Difficulty</strong>
+                    @task.Difficulty
+                </div>
+
+                <div class="task-detail-block">
+                    <strong>User</strong>
+                    @task.UserFirstName @task.UserLastName
+                </div>
+
+                <div class="task-details-actions d-flex justify-content-between mt-auto">
+                    <button class="btn-delete flex-fill me-2" @onclick="() => AskToDelete(task.Id)">Delete Task</button>
+                    <button class="btn-edit flex-fill" @onclick="@(() => EditTask(task.Id))">Edit Task</button>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@if (showConfirmPopup)
+{
+    <div class="popup-overlay">
+        <div class="popup-content text-center">
+            <img src="media/OnCheckErrorIcon.png" alt="Warning" class="popup-icon mb-3" />
+            <h4 class="popup-title">Are you sure?</h4>
+            <p class="popup-subtext">
+                Do you really want to delete these records? This process cannot be undone.
+            </p>
+            <div class="d-flex justify-content-center gap-3" style="margin-top: 2.5rem;">
+                <button class="popup-btn-cancel" @onclick="CancelDelete">Cancel</button>
+                <button class="popup-btn-delete" @onclick="ConfirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+}
+
+</LoginGuard>

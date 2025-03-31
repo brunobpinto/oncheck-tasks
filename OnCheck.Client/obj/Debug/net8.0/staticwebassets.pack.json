@@ -1,0 +1,105 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\obj\\Debug\\net8.0\\compressed\\7qi9vj5zlp.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\css\\Home.css",
+      "PackagePath": "staticwebassets\\css\\Home.css"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\css\\NotFound.css",
+      "PackagePath": "staticwebassets\\css\\NotFound.css"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\css\\SignInPage.css",
+      "PackagePath": "staticwebassets\\css\\SignInPage.css"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\css\\SignUpPage.css",
+      "PackagePath": "staticwebassets\\css\\SignUpPage.css"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\css\\TaskEdit.css",
+      "PackagePath": "staticwebassets\\css\\TaskEdit.css"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\css\\TaskList.css",
+      "PackagePath": "staticwebassets\\css\\TaskList.css"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\media\\OnCheck404.png",
+      "PackagePath": "staticwebassets\\media\\OnCheck404.png"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\media\\OnCheckArrow.png",
+      "PackagePath": "staticwebassets\\media\\OnCheckArrow.png"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\media\\OnCheckErrorIcon.png",
+      "PackagePath": "staticwebassets\\media\\OnCheckErrorIcon.png"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\media\\OnCheckFavicon.png",
+      "PackagePath": "staticwebassets\\media\\OnCheckFavicon.png"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\media\\OnCheckGetStartedAnimation.mp4",
+      "PackagePath": "staticwebassets\\media\\OnCheckGetStartedAnimation.mp4"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\media\\OnCheckHomeAnimation.mp4",
+      "PackagePath": "staticwebassets\\media\\OnCheckHomeAnimation.mp4"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\media\\OnCheckLoginAnimation.mp4",
+      "PackagePath": "staticwebassets\\media\\OnCheckLoginAnimation.mp4"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\media\\OnCheckLogo.jpg",
+      "PackagePath": "staticwebassets\\media\\OnCheckLogo.jpg"
+    },
+    {
+      "Id": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\wwwroot\\media\\OnCheckLogoDark.jpg",
+      "PackagePath": "staticwebassets\\media\\OnCheckLogoDark.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.OnCheck.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.OnCheck.Client.props",
+      "PackagePath": "build\\OnCheck.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.OnCheck.Client.props",
+      "PackagePath": "buildMultiTargeting\\OnCheck.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.OnCheck.Client.props",
+      "PackagePath": "buildTransitive\\OnCheck.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

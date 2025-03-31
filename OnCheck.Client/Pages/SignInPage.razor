@@ -1,0 +1,86 @@
+@page "/signin"
+@using OnCheck.Shared.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject AuthService AuthService
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnCheck</title>
+    <link rel="stylesheet" href="css/SignInPage.css" />
+</head>
+
+<!-- Mensagem de erro flutuante -->
+@if (!string.IsNullOrEmpty(loginError))
+{
+    <div class="floating-error-alert alert alert-danger">
+        <div class="d-flex justify-content-between align-items-center gap-3">
+            <span class="flex-grow-1">@loginError</span>
+            <button class="close-btn" @onclick="() => loginError = string.Empty">✕</button>
+        </div>
+    </div>
+}
+
+<!-- Navbar simples com logo -->
+<div class="signin-navbar px-4 py-3">
+    <button class="home-logo-btn" style="border: none; background: none;" @onclick="@(() => NavigationManager.NavigateTo("/"))">
+        <img src="media/OnCheckLogo.jpg"
+            alt="OnCheck Logo"
+            style="height: 36px; object-fit: contain; opacity: 0%;" 
+            class="home-logo-img"/>
+    </button>
+</div>
+
+<div class="signin-container d-flex justify-content-center align-items-center">
+    <!-- Formulário -->
+    <div class="signin-form me-5">
+        <h2 class="signin-title mb-4">Sign In</h2>
+
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input class="form-control" @bind="username" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" @bind="password" />
+        </div>
+
+        <button class="loginBtn-custom" @onclick="SignIn">Log In</button>
+
+        <p class="signup-text">
+            Don’t have an account? <a class="signup-link" @onclick="@(() => NavigationManager.NavigateTo("/signup"))">Sign up</a>
+        </p>
+    </div>
+
+    <!-- Vídeo -->
+    <div class="signin-video">
+        <video autoplay muted loop class="rounded signin-video-element">
+            <source src="media/OnCheckLoginAnimation.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+@code {
+    private string username = string.Empty;
+    private string password = string.Empty;
+    private string loginError = "";
+
+    private async Task SignIn()
+    {
+        var response = await Http.GetFromJsonAsync<List<User>>("api/users");
+        var user = response?.FirstOrDefault(u => u.Username == username && u.Password == password);
+
+        if (user is not null)
+        {
+            AuthService.SignIn(user);
+            NavigationManager.NavigateTo("/tasks");
+        }
+        else
+        {
+            loginError = "Invalid username or password";
+        }
+    }
+}
