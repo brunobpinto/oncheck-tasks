@@ -6,6 +6,8 @@ OnCheck is a web-based task management app built with **Blazor WebAssembly**, de
 ## Video  
 Watch the app in action in the video below:
 
+https://github.com/user-attachments/assets/719aa34a-e82d-43ce-b86a-35656bb6939e
+
 ## Some Features  
 - Full CRUD functionality for tasks (Create, Read, Update, Delete)  
 - Task filters by difficulty (Easy, Medium, Hard) and status (Completed, Pending)  
