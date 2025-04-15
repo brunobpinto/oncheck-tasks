@@ -1904,11 +1904,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\OnCheck.Client.csproj",
+      "projectUniqueName": "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.Client\\OnCheck.Client.csproj",
       "projectName": "OnCheck.Client",
-      "projectPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\OnCheck.Client.csproj",
+      "projectPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.Client\\OnCheck.Client.csproj",
       "packagesPath": "C:\\Users\\conta\\.nuget\\packages\\",
-      "outputPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Client\\obj\\",
+      "outputPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\conta\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1923,8 +1923,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Shared\\OnCheck.Shared.csproj": {
-              "projectPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Shared\\OnCheck.Shared.csproj"
+            "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.Shared\\OnCheck.Shared.csproj": {
+              "projectPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.Shared\\OnCheck.Shared.csproj"
             }
           }
         }

@@ -5225,11 +5225,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.API\\OnCheck.API.csproj",
+      "projectUniqueName": "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.API\\OnCheck.API.csproj",
       "projectName": "OnCheck.API",
-      "projectPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.API\\OnCheck.API.csproj",
+      "projectPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.API\\OnCheck.API.csproj",
       "packagesPath": "C:\\Users\\conta\\.nuget\\packages\\",
-      "outputPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.API\\obj\\",
+      "outputPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\conta\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -5244,8 +5244,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Shared\\OnCheck.Shared.csproj": {
-              "projectPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.Shared\\OnCheck.Shared.csproj"
+            "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.Shared\\OnCheck.Shared.csproj": {
+              "projectPath": "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.Shared\\OnCheck.Shared.csproj"
             }
           }
         }

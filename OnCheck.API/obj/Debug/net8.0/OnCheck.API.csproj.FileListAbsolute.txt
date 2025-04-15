@@ -169,3 +169,4 @@ D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.API\bin\Debug\net8.0\runtime
 D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.API\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.API\obj\Debug\net8.0\OnCheck.API.sourcelink.json

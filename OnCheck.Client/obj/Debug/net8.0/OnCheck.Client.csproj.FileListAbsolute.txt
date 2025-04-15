@@ -1035,3 +1035,4 @@ D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Client\obj\Debug\net8.0\OnCh
 D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Client\obj\Debug\net8.0\refint\OnCheck.Client.dll
 D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Client\obj\Debug\net8.0\OnCheck.Client.pdb
 D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Client\obj\Debug\net8.0\ref\OnCheck.Client.dll
+D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Client\obj\Debug\net8.0\OnCheck.Client.sourcelink.json

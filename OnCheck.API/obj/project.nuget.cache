@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2ueM6l3VRWo=",
+  "dgSpecHash": "ONjfZYjgnsU=",
   "success": true,
-  "projectFilePath": "D:\\Usuários\\Bruno Pinto\\Documentos\\OnCheck\\OnCheck.API\\OnCheck.API.csproj",
+  "projectFilePath": "D:\\Usuários\\Bruno Pinto\\Documentos\\ICAD - OnCheck\\OnCheck.API\\OnCheck.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\conta\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\conta\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

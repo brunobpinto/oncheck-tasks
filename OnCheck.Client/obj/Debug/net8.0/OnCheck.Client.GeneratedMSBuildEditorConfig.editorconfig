@@ -13,51 +13,51 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = OnCheck.Client
 build_property.RootNamespace = OnCheck.Client
-build_property.ProjectDir = D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Client\
+build_property.ProjectDir = D:\Usuários\Bruno Pinto\Documentos\ICAD - OnCheck\OnCheck.Client\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Usuários\Bruno Pinto\Documentos\OnCheck\OnCheck.Client
+build_property.MSBuildProjectDirectory = D:\Usuários\Bruno Pinto\Documentos\ICAD - OnCheck\OnCheck.Client
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Usuários/Bruno Pinto/Documentos/OnCheck/OnCheck.Client/App.razor]
+[D:/Usuários/Bruno Pinto/Documentos/ICAD - OnCheck/OnCheck.Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuários/Bruno Pinto/Documentos/OnCheck/OnCheck.Client/Pages/Home.razor]
+[D:/Usuários/Bruno Pinto/Documentos/ICAD - OnCheck/OnCheck.Client/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuários/Bruno Pinto/Documentos/OnCheck/OnCheck.Client/Pages/NotFound.razor]
+[D:/Usuários/Bruno Pinto/Documentos/ICAD - OnCheck/OnCheck.Client/Pages/NotFound.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90Rm91bmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuários/Bruno Pinto/Documentos/OnCheck/OnCheck.Client/Pages/SignInPage.razor]
+[D:/Usuários/Bruno Pinto/Documentos/ICAD - OnCheck/OnCheck.Client/Pages/SignInPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnbkluUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuários/Bruno Pinto/Documentos/OnCheck/OnCheck.Client/Pages/SignUpPage.razor]
+[D:/Usuários/Bruno Pinto/Documentos/ICAD - OnCheck/OnCheck.Client/Pages/SignUpPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnblVwUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuários/Bruno Pinto/Documentos/OnCheck/OnCheck.Client/Pages/TaskAdd.razor]
+[D:/Usuários/Bruno Pinto/Documentos/ICAD - OnCheck/OnCheck.Client/Pages/TaskAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza0FkZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuários/Bruno Pinto/Documentos/OnCheck/OnCheck.Client/Pages/TaskEdit.razor]
+[D:/Usuários/Bruno Pinto/Documentos/ICAD - OnCheck/OnCheck.Client/Pages/TaskEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza0VkaXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuários/Bruno Pinto/Documentos/OnCheck/OnCheck.Client/Pages/TaskList.razor]
+[D:/Usuários/Bruno Pinto/Documentos/ICAD - OnCheck/OnCheck.Client/Pages/TaskList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza0xpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuários/Bruno Pinto/Documentos/OnCheck/OnCheck.Client/Shared/LoginGuard.razor]
+[D:/Usuários/Bruno Pinto/Documentos/ICAD - OnCheck/OnCheck.Client/Shared/LoginGuard.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luR3VhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuários/Bruno Pinto/Documentos/OnCheck/OnCheck.Client/_Imports.razor]
+[D:/Usuários/Bruno Pinto/Documentos/ICAD - OnCheck/OnCheck.Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
